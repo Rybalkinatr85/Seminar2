@@ -3,34 +3,29 @@
 
 //Заполняю массив случайными числами от 100 до 999
 
-Console.WriteLine("Введите размер массива:  ");
-int size = Convert.ToInt32(Console.ReadLine());
-int[] numbers = new int[size];
-FillArrayRandomNumbers(numbers);
-Console.WriteLine("массив: ");
-PrintArray(numbers);
+int[] GetBinArray(int n)
+{
+int[] array = new int[n];
+for (int i = 0; i < array.Length; i++)
+{
+array[i] = new Random().Next(100,1000);
+}
+return array;
+}
+int EvenNumbers(int[] array)
+{
 int count = 0;
-
-for (int z = 0; z < numbers.Length; z++)
-if (numbers[z] % 2 == 0)
+for(int i = 0; i < array.Length; i++)
+{
+if(array[i] % 2 == 0)
+{
 count++;
-
-Console.WriteLine($"всего {numbers.Length} чисел, {count} из них чётные");
-
-void FillArrayRandomNumbers(int[] numbers)
-{
-    for(int i = 0; i < numbers.Length; i++)
-    {
-        numbers[i] = new Random().Next(100,1000);
-    }
 }
-void PrintArray(int[] numbers)
-{
-    Console.Write("[ ");
-    for(int i = 0; i < numbers.Length; i++)
-    {
-        Console.Write(numbers[i] + " ");
-    }
-    Console.Write("]");
-    Console.WriteLine();
 }
+return count;
+}
+Console.Clear();
+int[] mas = GetBinArray(10);
+Console.WriteLine($"Исходный массив: [{string.Join(", ", mas)}]");
+int rezult = EvenNumbers(mas);
+Console.WriteLine($"Четных чисел в массиве = {rezult}");
