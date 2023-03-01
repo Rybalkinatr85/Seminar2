@@ -8,14 +8,14 @@ double[] GetBinArray(int n)
     double[] array = new double[n];
     for (int i = 0; i < array.Length; i++)
     {
-        array[i] = new Random().Next(1, 20);
+        array[i] = new Random().Next(10, 100);
     }
     return array;
 }
 
-double FindMax(double[] array)
+double FindMax (double[] array)
 {
-    double max = 0;
+    double max = array[0];;
     for (int i = 0; i < array.Length; i++)
     {
         if (max < array[i])
@@ -29,7 +29,7 @@ double FindMax(double[] array)
 
 double FindMin(double[] array)
 {
-    double min = 0;
+    double min = array[0];;
     for (int i = 0; i < array.Length; i++)
     {
         if (min > array[i])
@@ -49,6 +49,7 @@ double ShowMinMax(double[] array)
 int n = 20;
 
 double[] mas = GetBinArray(n);
+Console.WriteLine($"Исходный массив: [{string.Join(", ", mas)}]");
 
 double maxNumbers = FindMax(mas);
 Console.WriteLine($"Максимальное значение:{maxNumbers}");
